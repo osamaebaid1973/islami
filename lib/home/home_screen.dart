@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:islami/app_resources.dart';
+import 'package:islami/home/ahadeth_tab.dart';
+import 'package:islami/home/date_tab.dart';
+import 'package:islami/home/quran_tab.dart';
+import 'package:islami/home/radio_tab.dart';
+import 'package:islami/home/sebha_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'HomeScreen';
-  const HomeScreen({super.key});
+  
+   HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -10,15 +17,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
+  List<Widget> tabs = [QuranTab(),AhadethTab(),SebhaTab(),RadioTab(),DateTab()];
   @override
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/images/home_bg.png'))),
+                image: AssetImage('assets/images/${_getBackgroundImageName()}'))),
         child: Scaffold(
           backgroundColor: Colors.transparent,
+          body: tabs[currentIndex],
           bottomNavigationBar: BottomNavigationBar(
               showSelectedLabels: true,
               showUnselectedLabels: false,
@@ -27,9 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {});
               },
               currentIndex: currentIndex,
-              unselectedItemColor: Color(0XFF202020),
+              unselectedItemColor: AppColors.blackColor,
               selectedItemColor: Colors.white,
-              backgroundColor: Color(0XFFE2BE7F),
+              backgroundColor: AppColors.primary,
               type: BottomNavigationBarType.fixed,
               items: [
                 BottomNavigationBarItem(
@@ -60,5 +69,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderRadius: BorderRadius.circular(66)),
             child: ImageIcon(AssetImage('assets/images/$name.png')))
         : ImageIcon(AssetImage('assets/images/$name.png'));
+  }
+  String _getBackgroundImageName(){
+    switch(currentIndex){
+      case 0 :
+       return 'home_bg.png';
+      case 1 :
+       return 'ahadeth_bg.png'; 
+      case 2 :
+       return 'sebha_bg.png'; 
+      case 3 :
+       return 'radio_bg.png';
+      case 4 :
+       return 'date_bg.png';  
+      default :
+       return 'home_bg.png';
+    }
   }
 }

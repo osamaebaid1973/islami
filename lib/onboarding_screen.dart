@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:islami/home_screen.dart';
+import 'package:islami/app_resources.dart';
+import 'package:islami/home/home_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   static String routeName = '/';
@@ -10,16 +11,16 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bodyStyle = GoogleFonts.elMessiri(
-        fontSize: 20, fontWeight: FontWeight.bold, color: Color(0XFFE2BE7F));
+        fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.primary);
     var pageDecoration = PageDecoration(
       imageFlex:2,
       titleTextStyle: TextStyle(
           fontSize: 24.0,
           fontWeight: FontWeight.bold,
-          color: Color(0XFFE2BE7F)),
+          color: AppColors.primary),
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Color(0XFF202020),
+      pageColor: AppColors.blackColor,
       imagePadding: EdgeInsets.only(top: 20
       )
     );
@@ -34,7 +35,7 @@ class OnboardingScreen extends StatelessWidget {
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Color(0XFFE2BE7F))),
+                color: AppColors.primary)),
         showDoneButton: true,
         onDone: () {
           Navigator.pushNamed(context, HomeScreen.routeName);
@@ -43,14 +44,14 @@ class OnboardingScreen extends StatelessWidget {
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Color(0XFFE2BE7F))),
+                color: AppColors.primary)),
         showNextButton: true,
         next: Text('next',
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Color(0XFFE2BE7F))),
-        globalBackgroundColor: Color(0XFF202020),
+                color: AppColors.primary)),
+        globalBackgroundColor: AppColors.blackColor,
         allowImplicitScrolling: false,
 
         //autoScrollDuration: 3000,

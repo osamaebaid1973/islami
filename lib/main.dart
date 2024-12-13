@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:islami/home_screen.dart';
+import 'package:islami/home/home_screen.dart';
 import 'package:islami/onboarding_screen.dart';
 
 void main() {
