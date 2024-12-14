@@ -18,7 +18,7 @@ class QuranTab extends StatelessWidget {
             Image.asset('assets/images/onboarding_header.png'),
             TextField(cursorColor: Colors.white,
               decoration: InputDecoration(
-                prefixIcon: ImageIcon(AssetImage('assets/images/search_icon.png'),color: AppColors.primary,),
+                prefixIcon: const ImageIcon(AssetImage('assets/images/search_icon.png'),color: AppColors.primary,),
                 hintText: 'Sura Name',
                 hintStyle: GoogleFonts.elMessiri(
                     color: Colors.white,
