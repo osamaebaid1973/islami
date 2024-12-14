@@ -21,7 +21,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      theme: ThemeData.light(),
+      theme: ThemeData(),//.light(),
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
