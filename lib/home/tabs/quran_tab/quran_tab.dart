@@ -4,6 +4,7 @@ import 'package:islami/app_resources.dart';
 import 'package:islami/home/tabs/quran_tab/sura_item_horizontal.dart';
 import 'package:islami/home/tabs/quran_tab/sura_name_item.dart';
 import 'package:islami/models/sura_model.dart';
+import 'package:islami/sura_details/sura_details_screen.dart';
 
 // ignore: must_be_immutable
 class QuranTab extends StatefulWidget {
@@ -70,8 +71,12 @@ class _QuranTabState extends State<QuranTab> {
                 ),
                 itemCount: searchResult.isEmpty ? suraNamesAr.length : searchResult.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return SuraNameItem(
-                    suraModel: searchResult.isEmpty ? getSuraModel(index) : getSearchedSuraModel(index),
+                  return InkWell(onTap: (){
+                    Navigator.pushNamed(context, SuraDetailsScreen.routeName,arguments:getSuraModel(index) );
+                  },
+                    child: SuraNameItem(
+                      suraModel: searchResult.isEmpty ? getSuraModel(index) : getSearchedSuraModel(index),
+                    ),
                   );
                 },
               ),

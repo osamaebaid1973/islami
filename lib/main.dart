@@ -3,12 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/home/home_screen.dart';
 import 'package:islami/onboarding_screen.dart';
+import 'package:islami/sura_details/sura_details_screen.dart';
 
 void main() {
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => const MainApp(),
+      builder: (context) => MainApp(),
     ),
   );
 }
@@ -21,13 +22,14 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      theme: ThemeData(),//.light(),
+      theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         OnboardingScreen.routeName: (context) => const OnboardingScreen(),
-        HomeScreen.routeName: (context) => const HomeScreen()
+        HomeScreen.routeName: (context) => const HomeScreen(),
+        SuraDetailsScreen.routeName : (context) => const SuraDetailsScreen()
       },
     );
   }
