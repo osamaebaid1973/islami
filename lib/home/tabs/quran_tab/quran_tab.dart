@@ -87,6 +87,15 @@ class QuranTab extends StatelessWidget {
               'Suras List',
               style: GoogleFonts.elMessiri(color: Colors.white, fontSize: 16),
             ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: suraNamesAr.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return  Text(suraNamesAr[index],style: GoogleFonts.elMessiri(color: Colors.white, fontSize: 16));
+                },
+              ),
+            ),
+
           ],
         ),
       ),
