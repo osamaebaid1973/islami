@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami/app_resources.dart';
 import 'package:islami/home/ahadeth_tab.dart';
 import 'package:islami/home/bottom_nav_bar.dart';
 import 'package:islami/home/date_tab.dart';

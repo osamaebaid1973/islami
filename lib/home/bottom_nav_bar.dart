@@ -41,9 +41,9 @@ class _nameState extends State<BottomNavBar> {
   Widget _buildItem(String name, int index) {
     return currentIndex == index
         ? Container(
-            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
             decoration: BoxDecoration(
-                color: Color(0x99202020),
+                color: const Color(0x99202020),
                 borderRadius: BorderRadius.circular(66)),
             child: ImageIcon(AssetImage('assets/images/$name.png')))
         : ImageIcon(AssetImage('assets/images/$name.png'));

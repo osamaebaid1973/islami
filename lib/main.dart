@@ -8,7 +8,7 @@ void main() {
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => MainApp(),
+      builder: (context) => const MainApp(),
     ),
   );
 }
@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         OnboardingScreen.routeName: (context) => const OnboardingScreen(),
-        HomeScreen.routeName: (context) => HomeScreen()
+        HomeScreen.routeName: (context) => const HomeScreen()
       },
     );
   }

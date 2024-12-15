@@ -1,63 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/app_resources.dart';
+import 'package:islami/home/tabs/quran_tab/sura_item_horizontal.dart';
+import 'package:islami/home/tabs/quran_tab/sura_name_item.dart';
+import 'package:islami/models/sura_model.dart';
 
 // ignore: must_be_immutable
-class QuranTab extends StatelessWidget {
-  List<String> suraNamesAr =  [
-  "الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", 
-  "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس",
-  "هود", "يوسف", "الرعد", "إبراهيم", "الحجر",
-  "النحل", "الإسراء", "الكهف", "مريم", "طه",
-  "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان",
-  "الشعراء", "النمل", "القصص", "العنكبوت", "الروم",
-  "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر",
-  "يس", "الصافات", "ص", "الزمر", "غافر",
-  "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية",
-  "الأحقاف", "محمد", "الفتح", "الحجرات", "ق",
-  "الذاريات", "الطور", "النجم", "القمر", "الرحمن",
-  "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة",
-  "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق",
-  "التحريم", "الملك", "القلم", "الحاقة", "المعارج",
-  "نوح", "الجن", "المزمل", "المدثر", "القيامة",
-  "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس",
-  "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج",
-  "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد",
-  "الشمس", "الليل", "الضحى", "الشرح", "التين",
-  "العلق", "القدر", "البينة", "الزلزلة", "العاديات",
-  "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل",
-  "قريش", "الماعون", "الكوثر", "الكافرون", "النصر",
-  "المسد", "الإخلاص", "الفلق", "الناس"
-];
-   List<String> suraNamesEn =  [
-  "Al-Fatihah", "Al-Baqarah", "Aal-E-Imran", "An-Nisa", "Al-Ma'idah",
-  "Al-An'am", "Al-A'raf", "Al-Anfal", "At-Tawbah", "Yunus",
-  "Hud", "Yusuf", "Ar-Ra'd", "Ibrahim", "Al-Hijr",
-  "An-Nahl", "Al-Isra", "Al-Kahf", "Maryam", "Ta-Ha",
-  "Al-Anbiya", "Al-Hajj", "Al-Mu'minun", "An-Nur", "Al-Furqan",
-  "Ash-Shu'ara", "An-Naml", "Al-Qasas", "Al-Ankabut", "Ar-Rum",
-  "Luqman", "As-Sajda", "Al-Ahzab", "Saba", "Fatir",
-  "Ya-Sin", "As-Saffat", "Sad", "Az-Zumar", "Ghafir",
-  "Fussilat", "Ash-Shura", "Az-Zukhruf", "Ad-Dukhan", "Al-Jathiya",
-  "Al-Ahqaf", "Muhammad", "Al-Fath", "Al-Hujurat", "Qaf",
-  "Adh-Dhariyat", "At-Tur", "An-Najm", "Al-Qamar", "Ar-Rahman",
-  "Al-Waqia", "Al-Hadid", "Al-Mujadila", "Al-Hashr", "Al-Mumtahina",
-  "As-Saff", "Al-Jumu'a", "Al-Munafiqun", "At-Taghabun", "At-Talaq",
-  "At-Tahrim", "Al-Mulk", "Al-Qalam", "Al-Haqqa", "Al-Ma'arij",
-  "Nuh", "Al-Jinn", "Al-Muzzammil", "Al-Muddaththir", "Al-Qiyama",
-  "Al-Insan", "Al-Mursalat", "An-Naba", "An-Nazi'at", "Abasa",
-  "At-Takwir", "Al-Infitar", "Al-Mutaffifin", "Al-Inshiqaq", "Al-Buruj",
-  "At-Tariq", "Al-Ala", "Al-Ghashiya", "Al-Fajr", "Al-Balad",
-  "Ash-Shams", "Al-Lail", "Ad-Duhaa", "Ash-Sharh", "At-Tin",
-  "Al-Alaq", "Al-Qadr", "Al-Bayyina", "Az-Zalzala", "Al-Adiyat",
-  "Al-Qari'a", "At-Takathur", "Al-Asr", "Al-Humaza", "Al-Fil",
-  "Quraish", "Al-Ma'un", "Al-Kawthar", "Al-Kafiroon", "An-Nasr",
-  "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"
-];
-
-
-  var searchController = TextEditingController();
+class QuranTab extends StatefulWidget {
   QuranTab({super.key});
+
+  @override
+  State<QuranTab> createState() => _QuranTabState();
+}
+
+class _QuranTabState extends State<QuranTab> {
+  var searchController = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    searchController.addListener(_onSearch);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,25 +40,42 @@ class QuranTab extends StatelessWidget {
               'Most Recently',
               style: GoogleFonts.elMessiri(color: Colors.white, fontSize: 16),
             ),
-            const SizedBox(height:8)
-            ,Container(color: Colors.red,
-            height: 150,
-               
-            ),
-            const SizedBox(height:8),
+            const SizedBox(height: 8),
+            searchResult.isEmpty
+                ? Container(
+                    //decoration:
+                    height: 150,
+                    child: ListView.separated(
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 16),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: suraNamesAr.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return SuraItemHorizontal(
+                            suraModel: getSuraModel(index));
+                      },
+                    ),
+                  )
+                : SizedBox(),
+            const SizedBox(height: 8),
             Text(
               'Suras List',
               style: GoogleFonts.elMessiri(color: Colors.white, fontSize: 16),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: suraNamesAr.length,
+              child: ListView.separated(
+                separatorBuilder: (context, index) => const Divider(
+                  endIndent: 40,
+                  indent: 40,
+                ),
+                itemCount: searchResult.isEmpty ? suraNamesAr.length : searchResult.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return  Text(suraNamesAr[index],style: GoogleFonts.elMessiri(color: Colors.white, fontSize: 16));
+                  return SuraNameItem(
+                    suraModel: searchResult.isEmpty ? getSuraModel(index) : getSearchedSuraModel(index),
+                  );
                 },
               ),
             ),
-
           ],
         ),
       ),
@@ -104,6 +84,7 @@ class QuranTab extends StatelessWidget {
 
   Widget _searchItem() {
     return TextField(
+      style: GoogleFonts.elMessiri(color: Colors.white, fontSize: 20),
       controller: searchController,
       cursorColor: Colors.white,
       decoration: InputDecoration(
@@ -125,5 +106,18 @@ class QuranTab extends StatelessWidget {
             borderSide: const BorderSide(color: AppColors.primary, width: 3)),
       ),
     );
+  }
+
+  _onSearch() {
+    searchResult.clear();
+    String text = searchController.text;
+    if(text.isNotEmpty) {
+      for (String data in suraNamesEn) {
+        if (data.toLowerCase().contains(text.toLowerCase())) {
+          searchResult.add(data);
+        }
+      }
+    }
+    setState(() {});
   }
 }
