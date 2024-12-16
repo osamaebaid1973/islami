@@ -14,24 +14,24 @@ class OnboardingScreen extends StatelessWidget {
         fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.primary);
     var pageDecoration = PageDecoration(
       imageFlex:2,
-      titleTextStyle: TextStyle(
+      titleTextStyle: const TextStyle(
           fontSize: 24.0,
           fontWeight: FontWeight.bold,
           color: AppColors.primary),
       bodyTextStyle: bodyStyle,
-      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      bodyPadding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       pageColor: AppColors.blackColor,
-      imagePadding: EdgeInsets.only(top: 20
+      imagePadding: const EdgeInsets.only(top: 20
       )
     );
     return SafeArea(
       child: IntroductionScreen(
         globalHeader: Image.asset('assets/images/onboarding_header.png'),
         dotsFlex: 2,
-        dotsDecorator: DotsDecorator(
+        dotsDecorator: const DotsDecorator(
             color: Color(0XFF707070), activeColor: Color(0XFFFFD482)),
         showBackButton: true,
-        back: Text('back',
+        back: const Text('back',
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -40,13 +40,13 @@ class OnboardingScreen extends StatelessWidget {
         onDone: () {
           Navigator.pushNamed(context, HomeScreen.routeName);
         },
-        done: Text('finish',
+        done: const Text('finish',
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primary)),
         showNextButton: true,
-        next: Text('next',
+        next: const Text('next',
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
