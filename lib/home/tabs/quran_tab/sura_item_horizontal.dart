@@ -4,8 +4,8 @@ import 'package:islami/app_resources.dart';
 import 'package:islami/models/sura_model.dart';
 
 class SuraItemHorizontal extends StatelessWidget {
-  SuraModel suraModel;
-  SuraItemHorizontal({required this.suraModel, super.key});
+  final SuraModel suraModel;
+  const SuraItemHorizontal({required this.suraModel, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,21 +15,25 @@ class SuraItemHorizontal extends StatelessWidget {
           color: AppColors.primary, borderRadius: BorderRadius.circular(24)),
       child: Row(
         children: [
-          Column(mainAxisAlignment: MainAxisAlignment.center,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
                 suraModel.suraNameEn,
-                style: GoogleFonts.elMessiri(color: AppColors.blackColor, fontSize: 24),
+                style: GoogleFonts.elMessiri(
+                    color: AppColors.blackColor, fontSize: 24),
               ),
-              const SizedBox(height:8),
+              const SizedBox(height: 8),
               Text(
                 suraModel.suraNameAr,
-                style: GoogleFonts.elMessiri(color: AppColors.blackColor, fontSize: 24),
+                style: GoogleFonts.elMessiri(
+                    color: AppColors.blackColor, fontSize: 24),
               ),
-              const SizedBox(height:8),
+              const SizedBox(height: 8),
               Text(
                 '${suraModel.numberOfVerses} verses',
-                style: GoogleFonts.elMessiri(color: AppColors.blackColor, fontSize: 16),
+                style: GoogleFonts.elMessiri(
+                    color: AppColors.blackColor, fontSize: 16),
               )
             ],
           ),

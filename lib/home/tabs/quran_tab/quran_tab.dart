@@ -8,7 +8,7 @@ import 'package:islami/sura_details/sura_details_screen.dart';
 
 // ignore: must_be_immutable
 class QuranTab extends StatefulWidget {
-  QuranTab({super.key});
+  const QuranTab({super.key});
 
   @override
   State<QuranTab> createState() => _QuranTabState();
@@ -34,7 +34,6 @@ class _QuranTabState extends State<QuranTab> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Image.asset('assets/images/onboarding_header.png'),
             _searchItem(),
             const SizedBox(height: 20),
             Text(
@@ -43,7 +42,7 @@ class _QuranTabState extends State<QuranTab> {
             ),
             const SizedBox(height: 8),
             searchResult.isEmpty
-                ? Container(
+                ? SizedBox(
                     //decoration:
                     height: 150,
                     child: ListView.separated(
@@ -57,7 +56,7 @@ class _QuranTabState extends State<QuranTab> {
                       },
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             const SizedBox(height: 8),
             Text(
               'Suras List',
@@ -69,13 +68,19 @@ class _QuranTabState extends State<QuranTab> {
                   endIndent: 40,
                   indent: 40,
                 ),
-                itemCount: searchResult.isEmpty ? suraNamesAr.length : searchResult.length,
+                itemCount: searchResult.isEmpty
+                    ? suraNamesAr.length
+                    : searchResult.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return InkWell(onTap: (){
-                    Navigator.pushNamed(context, SuraDetailsScreen.routeName,arguments:getSuraModel(index) );
-                  },
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, SuraDetailsScreen.routeName,
+                          arguments: getSuraModel(index));
+                    },
                     child: SuraNameItem(
-                      suraModel: searchResult.isEmpty ? getSuraModel(index) : getSearchedSuraModel(index),
+                      suraModel: searchResult.isEmpty
+                          ? getSuraModel(index)
+                          : getSearchedSuraModel(index),
                     ),
                   );
                 },
@@ -116,7 +121,7 @@ class _QuranTabState extends State<QuranTab> {
   _onSearch() {
     searchResult.clear();
     String text = searchController.text;
-    if(text.isNotEmpty) {
+    if (text.isNotEmpty) {
       for (String data in suraNamesEn) {
         if (data.toLowerCase().contains(text.toLowerCase())) {
           searchResult.add(data);

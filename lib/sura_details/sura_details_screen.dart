@@ -6,7 +6,7 @@ import 'package:islami/models/sura_model.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'SuraDetails';
-  SuraDetailsScreen({super.key});
+  const SuraDetailsScreen({super.key});
 
   @override
   State<SuraDetailsScreen> createState() => _SuraDetailsScreenState();
@@ -26,7 +26,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         backgroundColor: AppColors.blackColor,
         appBar: AppBar(
           backgroundColor: AppColors.blackColor,
-          iconTheme: IconThemeData(color: AppColors.primary),
+          iconTheme: const IconThemeData(color: AppColors.primary),
           title: Text(suraModel.suraNameEn,
               style: GoogleFonts.aBeeZee(
                   fontSize: 25,
@@ -40,7 +40,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
             children: [
               Image.asset('assets/images/home_bg.png'),
               Container(
-                margin: EdgeInsets.only(top: 16),
+                margin: const EdgeInsets.only(top: 16),
                 child: Column(
                   //mainAxisAlignment : MainAxisAlignment.center,
                   children: [
@@ -49,20 +49,22 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: AppColors.primary)),
-                    
-                    const SizedBox(height:60),
+
+                    const SizedBox(height: 60),
                     Expanded(
-                      child: ListView.separated(separatorBuilder: (context, index) {
-                        return const SizedBox(height:16);
-                      },
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(height: 16);
+                        },
                         itemCount: verses.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return Container(padding: EdgeInsets.symmetric(vertical: 10),
+                          return Container(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               border: Border.all(color: AppColors.primary),
                             ),
-                            child: Text('(${index+1}) ${verses[index]} ',
+                            child: Text('(${index + 1}) ${verses[index]} ',
                                 //textDirection: TextDirection.rtl,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.aBeeZee(

@@ -1,15 +1,18 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:islami/cache_helper/cache_helper.dart';
 import 'package:islami/home/home_screen.dart';
 import 'package:islami/onboarding_screen.dart';
 import 'package:islami/sura_details/sura_details_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) => MainApp(),
+      builder: (context) => const MainApp(),
     ),
   );
 }
@@ -22,14 +25,16 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.transparent),
+      darkTheme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: CacheHelper.getOnboardingScreenSeen('onBoarding') == null
+          ? OnboardingScreen.routeName
+          : HomeScreen.routeName,
       routes: {
         OnboardingScreen.routeName: (context) => const OnboardingScreen(),
         HomeScreen.routeName: (context) => const HomeScreen(),
-        SuraDetailsScreen.routeName : (context) =>  SuraDetailsScreen()
+        SuraDetailsScreen.routeName: (context) => const SuraDetailsScreen()
       },
     );
   }

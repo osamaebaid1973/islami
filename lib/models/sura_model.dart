@@ -1,7 +1,7 @@
 class SuraModel {
   String suraNameAr;
   String suraNameEn;
-  final index;
+  int index;
   int numberOfVerses;
   SuraModel(
       {required this.suraNameAr,
@@ -17,6 +17,7 @@ SuraModel getSuraModel(int index) {
       suraNameEn: suraNamesEn[index],
       numberOfVerses: numberOfVersesInSura[index]);
 }
+
 List<String> searchResult = [];
 SuraModel getSearchedSuraModel(int index) {
   return SuraModel(
@@ -25,7 +26,6 @@ SuraModel getSearchedSuraModel(int index) {
       suraNameEn: searchResult[index],
       numberOfVerses: numberOfVersesInSura[index]);
 }
-
 
 List<String> suraNamesEn = [
   "Al-Fatihah",

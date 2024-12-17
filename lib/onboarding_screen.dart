@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:islami/app_resources.dart';
+import 'package:islami/cache_helper/cache_helper.dart';
 import 'package:islami/home/home_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -39,6 +40,7 @@ class OnboardingScreen extends StatelessWidget {
         showDoneButton: true,
         onDone: () {
           Navigator.pushNamed(context, HomeScreen.routeName);
+          CacheHelper.setOnboardingScreenSeen();
         },
         done: const Text('finish',
             style: TextStyle(

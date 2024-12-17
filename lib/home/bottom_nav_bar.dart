@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:islami/app_resources.dart';
 
 class BottomNavBar extends StatefulWidget {
-  Function onChange;
-   BottomNavBar({required this.onChange,super.key});
+  final Function onChange;
+  BottomNavBar({required this.onChange, super.key});
 
   @override
   State<BottomNavBar> createState() => _nameState();
@@ -19,9 +19,9 @@ class _nameState extends State<BottomNavBar> {
         showUnselectedLabels: false,
         onTap: (value) {
           currentIndex = value;
-         
+
           setState(() {});
-           widget.onChange(currentIndex);
+          widget.onChange(currentIndex);
         },
         currentIndex: currentIndex,
         unselectedItemColor: AppColors.blackColor,
