@@ -92,3 +92,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     setState(() {});
   }
 }
+/*
+
+    
+ return Scaffold(
+ 
+ */
