@@ -1,7 +1,9 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/app_resources.dart';
+import 'package:islami/hadeth_details/hadeth_details.dart';
 import 'package:islami/models/hadeth_model.dart';
 
 class AhadethTab extends StatefulWidget {
@@ -20,27 +22,63 @@ class _AhadethTabState extends State<AhadethTab> {
       _loadHadethFile();
     }
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: ahadethList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Image.asset('assets/images/hadeth_bg.png'),
-                  Text(ahadethList[index].title,
-                      style: GoogleFonts.aBeeZee(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.blackColor))
-                ],
-              ); /*;*/
-            },
+          child: CarouselSlider(
+            options: CarouselOptions(height: double.infinity),
+            items: ahadethList.map((hadeth) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, HadethDetails.routeName,
+                          arguments: hadeth);
+                    },
+                    child: Stack(
+                      alignment: Alignment.topCenter,
+                      children: [
+                        Image.asset(
+                          'assets/images/hadeth_bg.png',
+                          width: double.infinity,
+                          height: double.infinity,
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(top: 32),
+                              child: Text(hadeth.title,
+                                  style: GoogleFonts.aBeeZee(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.blackColor)),
+                            ),
+                            const SizedBox(height: 40),
+                            Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                child: Text(hadeth.content.first,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 9,
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.aBeeZee(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.blackColor)),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                },
+              );
+            }).toList(),
           ),
         ),
+        const SizedBox(height: 16),
       ],
     );
   }
