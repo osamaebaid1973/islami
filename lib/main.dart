@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:islami/app_resources.dart';
 import 'package:islami/cache_helper/cache_helper.dart';
 import 'package:islami/hadeth_details/hadeth_details.dart';
 import 'package:islami/home/home_screen.dart';
@@ -26,7 +27,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      theme: ThemeData(scaffoldBackgroundColor: Colors.transparent),
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(
+              iconTheme: const IconThemeData(color: AppColors.primary)),
+          scaffoldBackgroundColor: Colors.transparent),
       darkTheme: ThemeData(),
       debugShowCheckedModeBanner: false,
       initialRoute: CacheHelper.getOnboardingScreenSeen('onBoarding') == null

@@ -15,7 +15,6 @@ class HadethDetails extends StatelessWidget {
         backgroundColor: AppColors.blackColor,
         appBar: AppBar(
           backgroundColor: AppColors.blackColor,
-          iconTheme: const IconThemeData(color: AppColors.primary),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
