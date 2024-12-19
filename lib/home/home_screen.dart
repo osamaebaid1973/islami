@@ -3,7 +3,8 @@ import 'package:islami/home/tabs/ahadeth_tab/ahadeth_tab.dart';
 import 'package:islami/home/bottom_nav_bar.dart';
 import 'package:islami/home/date_tab.dart';
 import 'package:islami/home/tabs/quran_tab/quran_tab.dart';
-import 'package:islami/home/radio_tab.dart';
+//import 'package:islami/home/radio_tab.dart';
+import 'package:islami/home/tabs/radio_tab/radio_tab.dart';
 import 'package:islami/home/tabs/sebha_tab/sebha_tab.dart';
 
 class HomeScreen extends StatefulWidget {

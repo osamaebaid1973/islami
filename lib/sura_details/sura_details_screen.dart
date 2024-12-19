@@ -17,7 +17,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SuraModel suraModel =
+    SuraModel? suraModel =
         ModalRoute.of(context)?.settings.arguments as SuraModel;
     if (verses.isEmpty) {
       loadSuraFile(suraModel.index);
