@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hijri/hijri_calendar.dart';
 import 'package:intl/intl.dart';
 import 'package:islami/home/tabs/date_tab/abbreviated_hijri_month.dart';
+import 'package:islami/home/tabs/date_tab/sala.dart';
 
 class DateTab extends StatelessWidget {
   DateTab({super.key});
@@ -49,16 +50,18 @@ class DateTab extends StatelessWidget {
             ),
           ),
           Container(
-              width: double.infinity,
-              height: 300,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                      'assets/images/sala_bg.png',
-                    ),
-                    fit: BoxFit.fill,
+            width: double.infinity,
+            height: 300,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/sala_bg.png',
                   ),
-                  borderRadius: BorderRadius.circular(40)))
+                  fit: BoxFit.fill,
+                ),
+                borderRadius: BorderRadius.circular(40)),
+            child: Sala(),
+          )
         ],
       ),
     );
