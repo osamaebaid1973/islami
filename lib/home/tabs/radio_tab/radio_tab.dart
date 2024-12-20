@@ -11,7 +11,7 @@ class RadioTab extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
-        children: [CustomToggleSwitch(), CustomRadio()],
+        children: [CustomToggleSwitch(), SizedBox(height: 10), CustomRadio()],
       ),
     );
   }
