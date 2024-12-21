@@ -445,6 +445,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  prayer_time:
+    dependency: "direct main"
+    description:
+      name: prayer_time
+      sha256: "0080b83751b54df5822347dd78ea9c15b57a4a9cecaaaea18a296b3d4bd49249"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   provider:
     dependency: transitive
     description:
